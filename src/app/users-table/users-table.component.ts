@@ -8,16 +8,16 @@ import {User, UsersService} from '../users.service'
 })
 export class UsersTableComponent implements OnInit {
 
-  users: User[] = []
+  public users: User[] = []
 
   constructor(private usersService: UsersService) { }
 
-  ngOnInit(): any {
-
+  ngOnInit(): void {
     this.usersService.getUsers()
-      .subscribe(response => {
-        this.users = response
-        console.log(this.users)
-      })
+      .subscribe(response => this.users = [...response])
+  }
+
+  getUserAddress(user): string {
+    return `${user.address.city}, ${user.address.street}, ${user.address.suite}`
   }
 }
