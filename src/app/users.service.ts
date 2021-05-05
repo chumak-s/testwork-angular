@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 import {Observable} from 'rxjs'
 
-export interface Geo {
+interface Geo {
   lat: string
   lng: string
 }
 
-export interface Address {
+interface Address {
   city: string
   geo: Geo
   street: string
@@ -15,7 +15,7 @@ export interface Address {
   zipcode: string
 }
 
-export interface Company {
+interface Company {
   bs: string
   catchPhrase: string
   name: string
