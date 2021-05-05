@@ -1,0 +1,18 @@
+table, tr, td, th {
+  border-collapse: collapse;
+  border: 1px solid black;
+  text-align: center;
+  padding: 5px;
+}
+
+tr:nth-last-child(2n) {
+  background: #9cd7ff;
+}
+
+tr:nth-last-child(2n+1) {
+  background: #cee7ff;
+}
+
+img {
+  border: 1px solid gray;
+}

@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>Avatar</th>
+    <th>Name</th>
+    <th>Username</th>
+    <th>E-mail</th>
+    <th>Address</th>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td><img src="https://via.placeholder.com/120x180" [alt]="user.name"></td>
+    <td>{{user.name}}</td>
+    <td>{{user.username}}</td>
+    <td>{{user.email}}</td>
+    <td>{{getUserAddress(user)}}</td>
+  </tr>
+</table>
