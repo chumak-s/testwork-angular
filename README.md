@@ -1,27 +1,37 @@
-# TestworkAngular
+Разработчик FE (front-end)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.11.
+Требуется:
 
-## Development server
+Создать фильтруемый/сортируемый по полям список пользователей и просмотра назначенных им задач.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Описание:
 
-## Code scaffolding
+В качестве сервера можно использовать сервис https://jsonplaceholder.typicode.com/ (10 пользователей)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Главная страница содержит список пользователей - https://jsonplaceholder.typicode.com/users. 
 
-## Build
+Показываемые поля -псевдоаватар (https://via.placeholder.com/120x180),
+ name, username, email, address (свести в строку "city, street, suite"). 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Список показывается с пагинацией по 3 позиции, с возможностью переключения между страницами.
 
-## Running unit tests
+Сверху списка находится фильтр по компаниям пользователей - выпадающий список всех компаний
+ (company.name), после выбора в списке выводятся только пользователи работающие в этой компании. 
+Есть возможность сбросить фильтр.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Список можно сортировать по всем текстовым полям, путем клика на заголовок столбца.
+ Изначально отсортирован по полю name.
 
-## Running end-to-end tests
+При клике на аватар или имя пользователя происходит переход на страницу /user/id,
+ где показана карточка пользователя https://jsonplaceholder.typicode.com/users?id=7,
+ включающая все его поля и выведены его задачи https://jsonplaceholder.typicode.com/todos?userId=7.
+ Поля - id, title, completed - чекбокс показывающий статус выполнения, без возможности изменения.
+ 
+Список отсортирован по статусу, сверху идут невыполненные задачи.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+При переходе на страницу /user/ или при получении ответа что пользователя нет - вывести сообщение 
+"Пользователь не найден" и оставить ссылку на главную страницу.
 
-## Further help
+Верстка адаптивная. На экранах меньше 800 пикс таблица прокручивается внутри контейнера, 
+фильтр и сортировка - выпадающие списки сверху таблицы.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
