@@ -5,6 +5,15 @@ table, tr, td, th {
   padding: 5px;
 }
 
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+pagination-controls {
+  text-align: center;
+}
+
 tr:nth-last-child(2n) {
   background: #9cd7ff;
 }

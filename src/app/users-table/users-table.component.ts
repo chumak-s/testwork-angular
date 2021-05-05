@@ -9,6 +9,7 @@ import {User, UsersService} from '../users.service'
 export class UsersTableComponent implements OnInit {
 
   public users: User[] = []
+  public pageNumber = 1
 
   constructor(private usersService: UsersService) { }
 
