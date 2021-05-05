@@ -6,7 +6,7 @@
     <th>E-mail</th>
     <th>Address</th>
   </tr>
-  <tr *ngFor="let user of users | paginate: { itemsPerPage: 3, currentPage: p }">
+  <tr *ngFor="let user of users | paginate: { itemsPerPage: 3, currentPage: pageNumber }">
     <td><img src="https://via.placeholder.com/120x180" [alt]="user.name"></td>
     <td>{{user.name}}</td>
     <td>{{user.username}}</td>
@@ -14,4 +14,4 @@
     <td>{{getUserAddress(user)}}</td>
   </tr>
 </table>
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
