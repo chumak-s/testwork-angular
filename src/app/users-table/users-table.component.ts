@@ -17,7 +17,7 @@ export class UsersTableComponent implements OnInit {
       .subscribe(response => this.users = [...response])
   }
 
-  getUserAddress(user): string {
+  getUserAddress(user: User): string {
     return `${user.address.city}, ${user.address.street}, ${user.address.suite}`
   }
 }

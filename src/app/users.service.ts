@@ -15,13 +15,15 @@ export interface Address {
   zipcode: string
 }
 
+export interface Company {
+  bs: string
+  catchPhrase: string
+  name: string
+}
+
 export interface User {
   address: Address
-  company: {
-    bs: string
-    catchPhrase: string
-    name: string
-  }
+  company: Company
   email: string
   id: number
   name: string
