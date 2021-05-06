@@ -1,5 +1,5 @@
-import {Component} from '@angular/core'
-import {User} from './users.service'
+import {Component, OnInit} from '@angular/core'
+import {User, UsersService} from './users.service'
 
 @Component({
   selector: 'app-root',
@@ -7,25 +7,29 @@ import {User} from './users.service'
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   title = 'testwork-angular'
-  filteredCompanies: string[]
+  selectedCompanies: string[]
   users: User[] = []
   filteredUsers: User[] = []
 
-  clonedUsers( users: User[]): void {
-    this.users = [...users]
+  constructor(private usersService: UsersService) { }
 
+  ngOnInit(): void {
+    this.usersService.getUsers()
+      .subscribe(response => {
+        this.users = [...response]
+      })
   }
 
   changeCompany(event): void {
-    this.filteredCompanies = event
+    this.selectedCompanies = event
 
     const filtered: User[] = []
 
     this.users.map((user) => {
-      if (this.filteredCompanies.includes(user.company.name)) {
+      if (this.selectedCompanies.includes(user.company.name)) {
         filtered.push(user)
       }
     })

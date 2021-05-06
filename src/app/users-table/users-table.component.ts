@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core'
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core'
 import {User, UsersService} from '../users.service'
 
 @Component({
@@ -6,26 +6,15 @@ import {User, UsersService} from '../users.service'
   templateUrl: './users-table.component.html',
   styleUrls: ['./users-table.component.scss']
 })
-export class UsersTableComponent implements OnInit, OnChanges{
+export class UsersTableComponent implements OnChanges{
 
-  @Output() clonedUsers: EventEmitter<User[]> = new EventEmitter<User[]>()
+  @Input() users: User[]
   @Input() filteredUsers: User[]
 
   public pageNumber = 1
-  public users: User[] = []
-
-  constructor(private usersService: UsersService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.pageNumber = 1
-  }
-
-  ngOnInit(): void {
-    this.usersService.getUsers()
-      .subscribe(response => {
-        this.users = [...response]
-        this.clonedUsers.emit(this.users)
-      })
+   this.pageNumber = 1
   }
 
   getUserAddress(user: User): string {
