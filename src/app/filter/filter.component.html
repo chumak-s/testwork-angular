@@ -1,0 +1,4 @@
+<select [(ngModel)]="currentCompany" (change)="onChangeSelect($event)" >
+  <option selected>Select company</option>
+  <option *ngFor="let item of companyList">{{item}}</option>
+</select>

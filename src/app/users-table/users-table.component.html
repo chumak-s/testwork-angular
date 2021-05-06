@@ -1,4 +1,4 @@
-<table>
+<table *ngIf="filteredUsers.length === 0; else filter">
   <tr>
     <th>Avatar</th>
     <th>Name</th>
@@ -14,4 +14,22 @@
     <td>{{getUserAddress(user)}}</td>
   </tr>
 </table>
+<ng-template #filter>
+  <table>
+    <tr>
+      <th>Avatar</th>
+      <th>Name</th>
+      <th>Username</th>
+      <th>E-mail</th>
+      <th>Address</th>
+    </tr>
+    <tr *ngFor="let user of filteredUsers | paginate: { itemsPerPage: 3, currentPage: pageNumber }">
+      <td><img src="https://via.placeholder.com/120x180" [alt]="user.name"></td>
+      <td>{{user.name}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td>{{getUserAddress(user)}}</td>
+    </tr>
+  </table>
+</ng-template>
 <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
