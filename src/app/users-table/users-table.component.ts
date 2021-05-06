@@ -42,6 +42,5 @@ export class UsersTableComponent implements OnInit, OnChanges {
     })
     this.filteredUsers = filtered
     this.pageNumber = 1
-    console.log(this.filteredUsers)
   }
 }
