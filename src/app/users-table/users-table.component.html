@@ -6,7 +6,7 @@
     <th>E-mail</th>
     <th>Address</th>
   </tr>
-  <tr *ngFor="let user of (filteredUsers.length === 0 ? users : filteredUsers) | paginate: { itemsPerPage: 3, currentPage: pageNumber }">
+  <tr *ngFor="let user of filteredUsers | paginate: { itemsPerPage: 3, currentPage: pageNumber }">
     <td><img src="https://via.placeholder.com/120x180" [alt]="user.name"></td>
     <td>{{user.name}}</td>
     <td>{{user.username}}</td>

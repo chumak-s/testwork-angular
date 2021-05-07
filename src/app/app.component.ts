@@ -12,6 +12,7 @@ export class AppComponent implements OnInit{
   title = 'testwork-angular'
   users: User[] = []
   filteredUsers: User[] = []
+  companiesList: string[] = []
 
   constructor(private usersService: UsersService) { }
 
@@ -19,18 +20,16 @@ export class AppComponent implements OnInit{
     this.usersService.getUsers()
       .subscribe(response => {
         this.users = [...response]
+        this.filteredUsers = [...response]
+        this.getCompaniesList()
       })
   }
 
+  getCompaniesList(): void  {
+      this.users.map((user) => this.companiesList.push(user.company.name))
+  }
+
   changeCompany(selectedCompanies): void {
-
-    const filtered: User[] = []
-
-    this.users.map((user) => {
-      if (selectedCompanies.includes(user.company.name)) {
-        filtered.push(user)
-      }
-    })
-    this.filteredUsers = filtered
+    this.filteredUsers = this.users.filter((user) => selectedCompanies.includes(user.company.name))
   }
 }

@@ -1,5 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core'
-import {User} from '../users.service'
+import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core'
 
 @Component({
   selector: 'app-filter',
@@ -9,15 +8,21 @@ import {User} from '../users.service'
 export class FilterComponent {
 
   @Output() onChangeCompany: EventEmitter<string[]> = new EventEmitter<string[]>()
-  @Input() users: User[]
+  @Input() companiesList: string[]
+  @ViewChild('mySelect', {static: false}) selectRef: ElementRef
   currentCompany: string
 
   onChangeSelect(event: Event): void {
     const value: string = (event.target as HTMLSelectElement).value
     if (value === 'Select company') {
-      this.onChangeCompany.emit([])
+      this.onChangeCompany.emit(this.companiesList)
     } else {
       this.onChangeCompany.emit([this.currentCompany])
     }
+  }
+
+  resetSelect(): void {
+    this.selectRef.nativeElement.value = 'Select company'
+    this.selectRef.nativeElement.dispatchEvent(new Event('change'))
   }
 }

@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core'
-import {User, UsersService} from '../users.service'
+import {User} from '../users.service'
 
 @Component({
   selector: 'app-users-table',
@@ -8,7 +8,6 @@ import {User, UsersService} from '../users.service'
 })
 export class UsersTableComponent implements OnChanges{
 
-  @Input() users: User[]
   @Input() filteredUsers: User[]
 
   public pageNumber = 1

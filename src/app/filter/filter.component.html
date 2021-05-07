@@ -1,4 +1,6 @@
-<select [(ngModel)]="currentCompany" (change)="onChangeSelect($event)" >
-  <option selected>Select company</option>
-  <option *ngFor="let user of users">{{user.company.name}}</option>
+<select [(ngModel)]="currentCompany" (change)="onChangeSelect($event)" #mySelect>
+  <option selected >Select company</option>
+  <option *ngFor="let company of companiesList">{{company}}</option>
 </select>
+<button (click)="resetSelect()">Reset</button>
+
