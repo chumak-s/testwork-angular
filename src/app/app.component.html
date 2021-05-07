@@ -1,7 +1,7 @@
 <h1>{{title}}</h1>
 <app-filter
   [companiesList]="companiesList"
-  (onChangeCompany)="changeCompany($event)"
+  (onChangeCompany)="onChangeCompany($event)"
 ></app-filter>
 <app-users-table
   [filteredUsers]="filteredUsers"

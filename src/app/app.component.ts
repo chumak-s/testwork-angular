@@ -21,15 +21,16 @@ export class AppComponent implements OnInit{
       .subscribe(response => {
         this.users = [...response]
         this.filteredUsers = [...response]
-        this.getCompaniesList()
+        this.companiesList = this.getCompaniesList()
+
       })
   }
 
-  getCompaniesList(): void  {
-      this.users.map((user) => this.companiesList.push(user.company.name))
+  getCompaniesList(): string[]  {
+    return this.users.map((user) => user.company.name)
   }
 
-  changeCompany(selectedCompanies): void {
+  onChangeCompany(selectedCompanies): void {
     this.filteredUsers = this.users.filter((user) => selectedCompanies.includes(user.company.name))
   }
 }

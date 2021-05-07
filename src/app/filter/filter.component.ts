@@ -22,6 +22,9 @@ export class FilterComponent {
   }
 
   resetSelect(): void {
+    if (this.selectRef.nativeElement.value === 'Select company') {
+      return
+    }
     this.selectRef.nativeElement.value = 'Select company'
     this.selectRef.nativeElement.dispatchEvent(new Event('change'))
   }
