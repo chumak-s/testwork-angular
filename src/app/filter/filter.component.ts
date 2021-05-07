@@ -9,7 +9,7 @@ export class FilterComponent {
 
   @Output() onChangeCompany: EventEmitter<string[]> = new EventEmitter<string[]>()
   @Input() companiesList: string[]
-  @ViewChild('mySelect', {static: false}) selectRef: ElementRef
+  @ViewChild('mySelect') selectRef: ElementRef
   currentCompany: string
 
   onChangeSelect(event: Event): void {
