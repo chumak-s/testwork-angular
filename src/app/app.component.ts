@@ -10,7 +10,6 @@ import {User, UsersService} from './users.service'
 export class AppComponent implements OnInit{
 
   title = 'testwork-angular'
-  selectedCompanies: string[]
   users: User[] = []
   filteredUsers: User[] = []
 
@@ -23,13 +22,12 @@ export class AppComponent implements OnInit{
       })
   }
 
-  changeCompany(event): void {
-    this.selectedCompanies = event
+  changeCompany(selectedCompanies): void {
 
     const filtered: User[] = []
 
     this.users.map((user) => {
-      if (this.selectedCompanies.includes(user.company.name)) {
+      if (selectedCompanies.includes(user.company.name)) {
         filtered.push(user)
       }
     })
