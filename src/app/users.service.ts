@@ -2,6 +2,16 @@ import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 import {Observable} from 'rxjs'
 
+export interface HeadersList {
+  label: string
+  value: string
+}
+
+export interface CurrentParamSort {
+  currentParam: string
+  asc: boolean
+}
+
 interface Geo {
   lat: string
   lng: string

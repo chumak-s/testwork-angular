@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core'
-import {User, UsersService} from './users.service'
+import {CurrentParamSort, User, UsersService} from './users.service'
+import {sortBy} from 'lodash'
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit{
   users: User[] = []
   filteredUsers: User[] = []
   companiesList: string[] = []
+  currentParamSort: CurrentParamSort = {currentParam: 'name', asc: true}
 
   constructor(private usersService: UsersService) { }
 
@@ -22,7 +24,7 @@ export class AppComponent implements OnInit{
         this.users = [...response]
         this.filteredUsers = [...response]
         this.companiesList = this.getCompaniesList()
-
+        this.sortTable(this.currentParamSort.currentParam)
       })
   }
 
@@ -32,5 +34,26 @@ export class AppComponent implements OnInit{
 
   onChangeCompany(selectedCompanies): void {
     this.filteredUsers = this.users.filter((user) => selectedCompanies.includes(user.company.name))
+    if (this.currentParamSort.asc) {
+      this.sortTable(this.currentParamSort.currentParam)
+    } else {
+      this.sortTable(this.currentParamSort.currentParam)
+      this.filteredUsers = this.filteredUsers.reverse()
+    }
+  }
+
+  onSort(currentParam): void {
+    if (this.currentParamSort.currentParam === currentParam) {
+          this.filteredUsers = this.filteredUsers.reverse()
+          this.currentParamSort.asc = !this.currentParamSort.asc
+        } else {
+          this.sortTable(currentParam)
+          this.currentParamSort.asc = true
+        }
+  }
+
+  sortTable(currentParam): void {
+      this.filteredUsers = sortBy(this.filteredUsers, [currentParam])
+      this.currentParamSort.currentParam = currentParam
   }
 }
