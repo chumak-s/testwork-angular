@@ -25,3 +25,12 @@ tr:nth-last-child(2n+1) {
 img {
   border: 1px solid gray;
 }
+
+th:not(:first-child) {
+  cursor: pointer;
+  transition: all 0.22s ease-in-out;
+}
+
+th:not(:first-child):hover {
+  box-shadow: 1px 4px 5px 1px #66b9f8;
+}
