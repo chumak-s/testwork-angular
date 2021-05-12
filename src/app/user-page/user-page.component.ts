@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import {ActivatedRoute, Params} from '@angular/router'
+import {ActivatedRoute, Params, Router} from '@angular/router'
 import {Todos, User, UsersService} from '../users.service'
 
 @Component({
@@ -15,12 +15,18 @@ export class UserPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private usersService: UsersService
 ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      this.usersService.getUser(+params.id).subscribe((response) => this.user = [...response])
+      this.usersService.getUser(+params.id).subscribe((response) => {
+        this.user = [...response]
+        if (response.length === 0) {
+          this.router.navigate(['/error'])
+        }
+      })
       this.userId = +params.id
     })
   }

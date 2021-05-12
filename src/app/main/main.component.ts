@@ -22,7 +22,7 @@ export class MainComponent implements OnInit {
         this.users = [...response]
         this.filteredUsers = [...response]
         this.companiesList = this.getCompaniesList()
-        this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam)
+        this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam, this.filteredUsers)
       })
   }
 
@@ -33,9 +33,9 @@ export class MainComponent implements OnInit {
   onChangeCompany(selectedCompanies: string[]): void {
     this.filteredUsers = this.users.filter((user) => selectedCompanies.includes(user.company.name))
     if (this.currentParamSort.asc) {
-      this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam)
+      this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam, this.filteredUsers)
     } else {
-      this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam)
+      this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam, this.filteredUsers)
       this.filteredUsers = [...this.filteredUsers.reverse()]
     }
   }
@@ -45,13 +45,13 @@ export class MainComponent implements OnInit {
       this.filteredUsers = [...this.filteredUsers.reverse()]
       this.currentParamSort = {...this.currentParamSort, asc: !this.currentParamSort.asc}
     } else {
-      this.filteredUsers = this.getSortUsers(currentParam)
+      this.filteredUsers = this.getSortUsers(currentParam, this.filteredUsers)
       this.currentParamSort = {...this.currentParamSort, asc: true}
     }
   }
 
-  getSortUsers(currentParam: string): User [] {
-    const sortUsers: User[] = sortBy(this.filteredUsers, [currentParam])
+  getSortUsers(currentParam: string, users: User[]): User [] {
+    const sortUsers: User[] = sortBy(users, [currentParam])
     this.currentParamSort = {...this.currentParamSort, currentParam}
     return sortUsers
   }
