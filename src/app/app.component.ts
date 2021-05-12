@@ -38,13 +38,13 @@ export class AppComponent implements OnInit{
       this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam)
     } else {
       this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam)
-      this.filteredUsers = this.filteredUsers.reverse()
+      this.filteredUsers = [...this.filteredUsers.reverse()]
     }
   }
 
   onSort(currentParam: string): void {
     if (this.currentParamSort.currentParam === currentParam) {
-      this.filteredUsers = this.filteredUsers.reverse()
+      this.filteredUsers = [...this.filteredUsers.reverse()]
       this.currentParamSort = {...this.currentParamSort, asc: !this.currentParamSort.asc}
     } else {
       this.filteredUsers = this.getSortUsers(currentParam)
