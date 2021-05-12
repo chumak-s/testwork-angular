@@ -1,0 +1,9 @@
+<app-filter
+  [companiesList]="companiesList"
+  (onChangeCompany)="onChangeCompany($event)"
+></app-filter>
+<app-users-table
+  (sortTable)="onSort($event)"
+  [filteredUsers]="filteredUsers"
+  [currentParamSort]="currentParamSort"
+></app-users-table>

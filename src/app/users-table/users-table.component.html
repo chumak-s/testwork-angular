@@ -6,8 +6,12 @@
     </th>
   </tr>
   <tr *ngFor="let user of filteredUsers | paginate: { itemsPerPage: 3, currentPage: pageNumber }">
-    <td><img src="https://via.placeholder.com/120x180" [alt]="user.name"></td>
-    <td>{{user.name}}</td>
+    <td>
+      <a [routerLink]="['/user/', user.id]"><img src="https://via.placeholder.com/120x180" [alt]="user.name"></a>
+    </td>
+    <td>
+      <a [routerLink]="['/user/', user.id]">{{user.name}}</a>
+    </td>
     <td>{{user.username}}</td>
     <td>{{user.email}}</td>
     <td>{{getUserAddress(user)}}</td>

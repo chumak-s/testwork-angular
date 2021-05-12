@@ -1,0 +1,14 @@
+<div class="container">
+  <div *ngFor="let user of user">
+    <h2>{{user.name}}</h2>
+    <p>{{user.username}}</p>
+    <p>{{user.phone}}</p>
+    <p>{{user.website}}</p>
+    <p>{{user.email}}</p>
+    <p>{{getFullAddress(user)}}</p>
+    <p>{{user.company.name}}</p>
+  </div>
+  <app-todos-users
+    [userId]="userId"
+  ></app-todos-users>
+</div>

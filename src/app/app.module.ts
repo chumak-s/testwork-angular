@@ -7,13 +7,19 @@ import {UsersTableComponent} from './users-table/users-table.component'
 import {HttpClientModule} from '@angular/common/http'
 import {NgxPaginationModule} from 'ngx-pagination'
 import {FilterComponent} from './filter/filter.component'
-import {FormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
+import { UserPageComponent } from './user-page/user-page.component';
+import { MainComponent } from './main/main.component';
+import { TodosUsersComponent } from './todos-users/todos-users.component'
 
 @NgModule({
     declarations: [
         AppComponent,
         UsersTableComponent,
         FilterComponent,
+        UserPageComponent,
+        MainComponent,
+        TodosUsersComponent,
     ],
   imports: [
     BrowserModule,

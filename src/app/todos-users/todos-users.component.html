@@ -1,0 +1,5 @@
+<h2>Task</h2>
+<div class="task" *ngFor="let todo of todos">
+  <p>{{todo.title}}</p>
+  <input type="checkbox" disabled [checked]="todo.completed">
+</div>
