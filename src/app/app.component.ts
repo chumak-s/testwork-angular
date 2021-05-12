@@ -24,7 +24,7 @@ export class AppComponent implements OnInit{
         this.users = [...response]
         this.filteredUsers = [...response]
         this.companiesList = this.getCompaniesList()
-        this.sortTable(this.currentParamSort.currentParam)
+        this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam)
       })
   }
 
@@ -32,28 +32,29 @@ export class AppComponent implements OnInit{
     return this.users.map((user) => user.company.name)
   }
 
-  onChangeCompany(selectedCompanies): void {
+  onChangeCompany(selectedCompanies: string[]): void {
     this.filteredUsers = this.users.filter((user) => selectedCompanies.includes(user.company.name))
     if (this.currentParamSort.asc) {
-      this.sortTable(this.currentParamSort.currentParam)
+      this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam)
     } else {
-      this.sortTable(this.currentParamSort.currentParam)
+      this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam)
       this.filteredUsers = this.filteredUsers.reverse()
     }
   }
 
-  onSort(currentParam): void {
+  onSort(currentParam: string): void {
     if (this.currentParamSort.currentParam === currentParam) {
-          this.filteredUsers = this.filteredUsers.reverse()
-          this.currentParamSort.asc = !this.currentParamSort.asc
-        } else {
-          this.sortTable(currentParam)
-          this.currentParamSort.asc = true
-        }
+      this.filteredUsers = this.filteredUsers.reverse()
+      this.currentParamSort.asc = !this.currentParamSort.asc
+    } else {
+      this.filteredUsers = this.getSortUsers(currentParam)
+      this.currentParamSort = {...this.currentParamSort, asc: true}
+    }
   }
 
-  sortTable(currentParam): void {
-      this.filteredUsers = sortBy(this.filteredUsers, [currentParam])
-      this.currentParamSort.currentParam = currentParam
+  getSortUsers(currentParam: string): User [] {
+      const sortUsers: User[] = sortBy(this.filteredUsers, [currentParam])
+      this.currentParamSort = {...this.currentParamSort, currentParam}
+      return sortUsers
   }
 }

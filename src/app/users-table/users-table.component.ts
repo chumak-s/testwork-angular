@@ -32,19 +32,11 @@ export class UsersTableComponent implements OnChanges{
     return `${user.address.city}, ${user.address.street}, ${user.address.suite}`
   }
 
-  iconCurrentParams(param): string {
-    if (param === this.currentParamSort.currentParam) {
-      return this.getIconCode()
-    } else {
-      return ''
-    }
+  iconCurrentParams(param: string): string {
+    return param === this.currentParamSort.currentParam ? this.getIconCode() : ''
   }
 
   getIconCode(): string {
-    if (this.currentParamSort.asc) {
-      return '\u21E9'
-    } else {
-      return '\u21E7'
-    }
+    return this.currentParamSort.asc ? '\u21E9' : '\u21E7'
   }
 }
