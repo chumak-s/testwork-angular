@@ -7,7 +7,8 @@ table, tr, td, th {
 
 table {
   width: 100%;
-  table-layout: fixed;
+  table-layout: auto;
+  font-size: max(1.5vw, 16px);
 }
 
 pagination-controls {
@@ -33,4 +34,29 @@ th:not(:first-child) {
 
 th:not(:first-child):hover {
   box-shadow: 1px 4px 5px 1px #66b9f8;
+}
+
+@media screen and (max-width: 800px) {
+  table {
+    width: 800px;
+  }
+  .container {
+    overflow-y: scroll;
+  }
+}
+
+.col1 {
+  width: 15%;
+}
+.col2 {
+  width: 20%;
+}
+.col3 {
+  width: 15%;
+}
+.col4 {
+  width: 25%;
+}
+.col5 {
+  width: 25%;
 }

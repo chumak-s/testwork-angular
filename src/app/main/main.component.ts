@@ -22,7 +22,7 @@ export class MainComponent implements OnInit {
         this.users = [...response]
         this.filteredUsers = [...response]
         this.companiesList = this.getCompaniesList()
-        this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam, this.filteredUsers)
+        this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam, this.filteredUsers, this.currentParamSort.asc)
       })
   }
 
@@ -32,27 +32,27 @@ export class MainComponent implements OnInit {
 
   onChangeCompany(selectedCompanies: string[]): void {
     this.filteredUsers = this.users.filter((user) => selectedCompanies.includes(user.company.name))
-    if (this.currentParamSort.asc) {
-      this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam, this.filteredUsers)
-    } else {
-      this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam, this.filteredUsers)
-      this.filteredUsers = [...this.filteredUsers.reverse()]
-    }
+    this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam, this.filteredUsers, this.currentParamSort.asc)
   }
 
   onSort(currentParam: string): void {
     if (this.currentParamSort.currentParam === currentParam) {
-      this.filteredUsers = [...this.filteredUsers.reverse()]
       this.currentParamSort = {...this.currentParamSort, asc: !this.currentParamSort.asc}
+      this.filteredUsers = this.getSortUsers(currentParam, this.filteredUsers, this.currentParamSort.asc)
     } else {
-      this.filteredUsers = this.getSortUsers(currentParam, this.filteredUsers)
       this.currentParamSort = {...this.currentParamSort, asc: true}
+      this.filteredUsers = this.getSortUsers(currentParam, this.filteredUsers, this.currentParamSort.asc)
     }
   }
 
-  getSortUsers(currentParam: string, users: User[]): User [] {
+  getSortUsers(currentParam: string, users: User[], asc?: boolean): User [] {
     const sortUsers: User[] = sortBy(users, [currentParam])
     this.currentParamSort = {...this.currentParamSort, currentParam}
-    return sortUsers
+    return asc ? sortUsers : sortUsers.reverse()
+  }
+
+  onChangeSelectParams(currentParamSort): void {
+    this.currentParamSort = {asc: currentParamSort.asc, currentParam: currentParamSort.currentParam}
+    this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam, this.filteredUsers, this.currentParamSort.asc)
   }
 }

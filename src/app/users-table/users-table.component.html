@@ -1,20 +1,23 @@
-<table>
-  <tr>
-    <th>Avatar</th>
-    <th *ngFor="let header of headersList" (click)="onSort(header.value)">
-      {{header.label + ' ' + iconCurrentParams(header.value)}}
-    </th>
-  </tr>
-  <tr *ngFor="let user of filteredUsers | paginate: { itemsPerPage: 3, currentPage: pageNumber }">
-    <td>
-      <a [routerLink]="['/user/', user.id]"><img src="https://via.placeholder.com/120x180" [alt]="user.name"></a>
-    </td>
-    <td>
-      <a [routerLink]="['/user/', user.id]">{{user.name}}</a>
-    </td>
-    <td>{{user.username}}</td>
-    <td>{{user.email}}</td>
-    <td>{{getUserAddress(user)}}</td>
-  </tr>
-</table>
-<pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+<div class="container">
+  <table>
+    <tr>
+      <th class="col1">Avatar</th>
+      <th *ngFor="let header of headersList" [class]="'col' + header.col" (click)="onSort(header.value)">
+        {{header.label + ' ' + iconCurrentParams(header.value)}}
+      </th>
+    </tr>
+    <tr *ngFor="let user of filteredUsers | paginate: { itemsPerPage: 3, currentPage: pageNumber }">
+      <td>
+        <a [routerLink]="['/user/', user.id]"><img src="https://via.placeholder.com/120x180" [alt]="user.name"></a>
+      </td>
+      <td>
+        <a [routerLink]="['/user/', user.id]">{{user.name}}</a>
+      </td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td>{{getUserAddress(user)}}</td>
+    </tr>
+  </table>
+</div>
+  <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+
