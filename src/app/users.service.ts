@@ -2,6 +2,13 @@ import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 import {Observable} from 'rxjs'
 
+export interface Todos {
+  id: number
+  completed: boolean
+  title: string
+  userId: number
+}
+
 export interface HeadersList {
   label: string
   value: string
@@ -49,5 +56,13 @@ export class UsersService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users')
+  }
+
+  getUser(id: number): Observable<User[]> {
+    return this.http.get<User[]>(`https://jsonplaceholder.typicode.com/users?id=${id}`)
+  }
+
+  getTodosUser(id: number): Observable<Todos[]> {
+    return this.http.get<Todos[]>(`https://jsonplaceholder.typicode.com/todos?userId=${id}`)
   }
 }
