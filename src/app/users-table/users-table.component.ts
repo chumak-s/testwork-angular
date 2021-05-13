@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core'
-import {CurrentParamSort, HeadersList, User} from '../users.service'
+import {ParamSort, HeadersList, User} from '../users.service'
 
 @Component({
   selector: 'app-users-table',
@@ -9,8 +9,8 @@ import {CurrentParamSort, HeadersList, User} from '../users.service'
 export class UsersTableComponent implements OnChanges{
 
   @Input() filteredUsers: User[]
-  @Input() currentParamSort: CurrentParamSort
-  @Output() sortTable: EventEmitter<CurrentParamSort> = new EventEmitter<CurrentParamSort>()
+  @Input() currentParamSort: ParamSort
+  @Output() sortTable: EventEmitter<ParamSort> = new EventEmitter<ParamSort>()
 
   public pageNumber = 1
   public headersList: HeadersList[] = [
@@ -25,12 +25,14 @@ export class UsersTableComponent implements OnChanges{
   }
 
   onSort(currentParam: string): void {
+    let paramSort: ParamSort
+
     if (this.currentParamSort.currentParam === currentParam) {
-      this.currentParamSort = {...this.currentParamSort, asc: !this.currentParamSort.asc}
+      paramSort = { currentParam: this.currentParamSort.currentParam, asc: !this.currentParamSort.asc}
     } else {
-      this.currentParamSort = {currentParam, asc: true}
+      paramSort = {currentParam, asc: true}
     }
-    this.sortTable.emit(this.currentParamSort)
+    this.sortTable.emit(paramSort)
   }
 
   getUserAddress(user: User): string {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import {CurrentParamSort, User, UsersService} from '../users.service'
+import {ParamSort, User, UsersService} from '../users.service'
 import {sortBy} from 'lodash'
 
 @Component({
@@ -12,7 +12,7 @@ export class MainComponent implements OnInit {
   users: User[] = []
   filteredUsers: User[] = []
   companiesList: string[] = []
-  currentParamSort: CurrentParamSort = {currentParam: 'name', asc: true}
+  currentParamSort: ParamSort = {currentParam: 'name', asc: true}
 
   constructor(private usersService: UsersService) { }
 
@@ -35,8 +35,8 @@ export class MainComponent implements OnInit {
     this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam, this.filteredUsers, this.currentParamSort.asc)
   }
 
-  onSort(currentParamSort: CurrentParamSort): void {
-    this.currentParamSort = {currentParam: currentParamSort.currentParam, asc: currentParamSort.asc}
+  onSort(currentParamSort: ParamSort): void {
+    this.currentParamSort = currentParamSort
     this.filteredUsers = this.getSortUsers(currentParamSort.currentParam, this.filteredUsers, currentParamSort.asc)
   }
 
@@ -47,7 +47,7 @@ export class MainComponent implements OnInit {
   }
 
   onChangeSelectParams(currentParamSort): void {
-    this.currentParamSort = {asc: currentParamSort.asc, currentParam: currentParamSort.currentParam}
+    this.currentParamSort = currentParamSort
     this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam, this.filteredUsers, this.currentParamSort.asc)
   }
 }

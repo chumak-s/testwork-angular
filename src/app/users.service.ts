@@ -15,7 +15,7 @@ export interface HeadersList {
   className: string
 }
 
-export interface CurrentParamSort {
+export interface ParamSort {
   currentParam: string
   asc: boolean
 }

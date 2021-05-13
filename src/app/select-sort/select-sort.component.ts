@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core'
-import {CurrentParamSort} from '../users.service'
+import {ParamSort} from '../users.service'
 
 @Component({
   selector: 'app-select-sort',
@@ -9,9 +9,9 @@ import {CurrentParamSort} from '../users.service'
 export class SelectSortComponent {
 
   public selectedParam: string
-  private _currentParamSort: CurrentParamSort
-  @Output() selectParam: EventEmitter<CurrentParamSort> = new EventEmitter<CurrentParamSort>()
-  @Input() set currentParamSort(value: CurrentParamSort){
+  private _currentParamSort: ParamSort
+  @Output() selectParam: EventEmitter<ParamSort> = new EventEmitter<ParamSort>()
+  @Input() set currentParamSort(value: ParamSort){
     this._currentParamSort = {...value}
     if (this.currentParamSort.asc) {
       this.selectedParam = this.currentParamSort.currentParam
@@ -19,7 +19,7 @@ export class SelectSortComponent {
       this.selectedParam = this.currentParamSort.currentParam + ' reverse'
     }
   }
-  get currentParamSort(): CurrentParamSort {
+  get currentParamSort(): ParamSort {
     return this._currentParamSort
   }
 
