@@ -1,12 +1,12 @@
-<div class="container">
-  <div *ngFor="let user of user">
+<div class="userContainer">
+  <div class="userDescription" *ngFor="let user of user">
     <h2>{{user.name}}</h2>
-    <p>{{user.username}}</p>
-    <p>{{user.phone}}</p>
-    <p>{{user.website}}</p>
-    <p>{{user.email}}</p>
-    <p>{{getFullAddress(user)}}</p>
-    <p>{{user.company.name}}</p>
+    <p><strong>Username</strong> {{user.username}}</p>
+    <p><strong>Phone</strong> {{user.phone}}</p>
+    <p><strong>Website</strong> {{user.website}}</p>
+    <p><strong>E-mail</strong> {{user.email}}</p>
+    <p><strong>Address</strong> {{getFullAddress(user)}}</p>
+    <p><strong>Company</strong> {{user.company.name}}</p>
   </div>
   <app-todos-users
     [userId]="userId"

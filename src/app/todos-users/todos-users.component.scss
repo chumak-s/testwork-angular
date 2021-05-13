@@ -3,7 +3,11 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px;
+  margin: 5px;
   border: 1px dashed #ccc;
   padding: 5px;
+}
+
+h2 {
+  text-align: center;
 }

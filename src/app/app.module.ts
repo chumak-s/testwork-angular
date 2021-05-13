@@ -13,7 +13,9 @@ import { MainComponent } from './main/main.component'
 import { TodosUsersComponent } from './todos-users/todos-users.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 import { UserNotFoundComponent } from './user-not-found/user-not-found.component'
-import { SelectSortComponent } from './select-sort/select-sort.component'
+import { SelectSortComponent } from './select-sort/select-sort.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component'
 
 @NgModule({
     declarations: [
@@ -26,6 +28,8 @@ import { SelectSortComponent } from './select-sort/select-sort.component'
         PageNotFoundComponent,
         UserNotFoundComponent,
         SelectSortComponent,
+        FooterComponent,
+        HeaderComponent,
     ],
   imports: [
     BrowserModule,

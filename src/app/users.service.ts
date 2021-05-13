@@ -12,7 +12,7 @@ export interface Todos {
 export interface HeadersList {
   label: string
   value: string
-  col: number
+  className: string
 }
 
 export interface CurrentParamSort {

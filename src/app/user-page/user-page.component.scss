@@ -1,6 +1,21 @@
-.container {
+.userContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
+h2, p {
+  margin: 5px;
+}
+
+.userDescription {
+  border: 1px solid black;
+  border-radius: 10px;
+  height: max-content;
+  padding: 5px;
+  margin: 10px;
+}
+
+h2 {
+  text-align: center;
+}
