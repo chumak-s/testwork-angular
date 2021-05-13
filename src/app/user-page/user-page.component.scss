@@ -1,4 +1,4 @@
-.userContainer {
+.user-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -8,7 +8,7 @@ h2, p {
   margin: 5px;
 }
 
-.userDescription {
+.user-description {
   border: 1px solid black;
   border-radius: 10px;
   height: max-content;
