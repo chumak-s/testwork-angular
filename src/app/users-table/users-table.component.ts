@@ -10,7 +10,7 @@ export class UsersTableComponent implements OnChanges{
 
   @Input() filteredUsers: User[]
   @Input() currentParamSort: CurrentParamSort
-  @Output() sortTable: EventEmitter<string> = new EventEmitter<string>()
+  @Output() sortTable: EventEmitter<CurrentParamSort> = new EventEmitter<CurrentParamSort>()
 
   public pageNumber = 1
   public headersList: HeadersList[] = [
@@ -25,7 +25,12 @@ export class UsersTableComponent implements OnChanges{
   }
 
   onSort(currentParam: string): void {
-    this.sortTable.emit(currentParam)
+    if (this.currentParamSort.currentParam === currentParam) {
+      this.currentParamSort = {...this.currentParamSort, asc: !this.currentParamSort.asc}
+    } else {
+      this.currentParamSort = {currentParam, asc: true}
+    }
+    this.sortTable.emit(this.currentParamSort)
   }
 
   getUserAddress(user: User): string {

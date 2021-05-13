@@ -35,14 +35,9 @@ export class MainComponent implements OnInit {
     this.filteredUsers = this.getSortUsers(this.currentParamSort.currentParam, this.filteredUsers, this.currentParamSort.asc)
   }
 
-  onSort(currentParam: string): void {
-    if (this.currentParamSort.currentParam === currentParam) {
-      this.currentParamSort = {...this.currentParamSort, asc: !this.currentParamSort.asc}
-      this.filteredUsers = this.getSortUsers(currentParam, this.filteredUsers, this.currentParamSort.asc)
-    } else {
-      this.currentParamSort = {...this.currentParamSort, asc: true}
-      this.filteredUsers = this.getSortUsers(currentParam, this.filteredUsers, this.currentParamSort.asc)
-    }
+  onSort(currentParamSort: CurrentParamSort): void {
+    this.currentParamSort = {currentParam: currentParamSort.currentParam, asc: currentParamSort.asc}
+    this.filteredUsers = this.getSortUsers(currentParamSort.currentParam, this.filteredUsers, currentParamSort.asc)
   }
 
   getSortUsers(currentParam: string, users: User[], asc?: boolean): User [] {
