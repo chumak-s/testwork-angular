@@ -1,7 +1,14 @@
-<app-filter
-  [companiesList]="companiesList"
-  (onChangeCompany)="onChangeCompany($event)"
-></app-filter>
+<div class="select-container">
+  <app-filter
+    [companiesList]="companiesList"
+    (onChangeCompany)="onChangeCompany($event)"
+  ></app-filter>
+  <app-select-sort
+   (selectParam)="onChangeSelectParams($event)"
+   [currentParamSort]="currentParamSort"
+  >
+  </app-select-sort>
+</div>
 <app-users-table
   (sortTable)="onSort($event)"
   [filteredUsers]="filteredUsers"

@@ -12,6 +12,7 @@ export interface Todos {
 export interface HeadersList {
   label: string
   value: string
+  className: string
 }
 
 export interface CurrentParamSort {

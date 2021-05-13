@@ -8,9 +8,9 @@ import {UserNotFoundComponent} from './user-not-found/user-not-found.component';
 const routes: Routes = [
   {path: '', component: MainComponent},
   {path: 'user/:id', component: UserPageComponent},
-  {path: 'error404', component: PageNotFoundComponent},
+  {path: 'page-not-found', component: PageNotFoundComponent},
   {path: 'error', component: UserNotFoundComponent},
-  {path: '**', redirectTo: '/error404'}
+  {path: '**', redirectTo: '/page-not-found'}
 ]
 
 @NgModule({

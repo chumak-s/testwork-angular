@@ -14,10 +14,10 @@ export class UsersTableComponent implements OnChanges{
 
   public pageNumber = 1
   public headersList: HeadersList[] = [
-    {label: 'Name', value: 'name'},
-    {label: 'Username', value: 'username'},
-    {label: 'E-mail', value: 'email'},
-    {label: 'Address', value: 'address.city'},
+    {label: 'Name', value: 'name', className: 'col-20'},
+    {label: 'Username', value: 'username', className: 'col-15'},
+    {label: 'E-mail', value: 'email', className: 'col-25'},
+    {label: 'Address', value: 'address.city', className: 'col-25'},
   ]
 
   ngOnChanges(changes: SimpleChanges): void {
